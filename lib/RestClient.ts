@@ -108,6 +108,7 @@ export class RestClient {
         let headers: ifm.IHeaders = this._headersFromOptions(options, true);
 
         let data: string = JSON.stringify(resources, null, 2);
+        data = data.slice(1, -1); 
         let res: httpm.HttpClientResponse = await this.client.post(url, data, headers);
         return this._processResponse<T>(res, options);
     }
